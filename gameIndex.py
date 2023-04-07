@@ -5,7 +5,7 @@
 game_lib = {
     1: "Tic-Tac-Toe",
     2: "Rock Paper Scissors",
-    3: "Checkers"
+    3: "Number Guesser"
 }
 
 while True:
@@ -13,7 +13,7 @@ while True:
 Your game library:
 1: Tic-Tac-Toe
 2: Rock Paper Scissors
-3: Checkers
+3: Number Guesser
 exit: quit menu
 """)
     game_choice = input("""
