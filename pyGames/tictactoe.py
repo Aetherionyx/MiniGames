@@ -219,6 +219,9 @@ def play_t3():
     game_round = 0
     game_over = False
     win = False
+    p1wins = 0
+    p2wins = 0
+    sysTies = 0
 
     current_player = "X"
 
@@ -254,6 +257,11 @@ def play_t3():
                 win = check_win(current_player, win)
                 if win == True:
                     game_over = True
+                    if current_player == "X":
+                        p1wins += 1
+                    elif current_player == "O":
+                        p2wins += 1
+                    print(f"Player score: {p1wins}. Computer score: {p2wins}. Scratches: {sysTies}.")
                 else:
                     game_over = False
                 break
@@ -264,11 +272,15 @@ def play_t3():
             elif spots_left == 0:
                 render()
                 print("It's a scratch. No winners.")
+                sysTies += 1
+                print(f"Player score: {p1wins}. Computer score: {p2wins}. Scratches: {sysTies}.")
                 game_over == True
         
         if spots_left == 0 and game_over is False:
             render()
             print("It's a scratch. No winners.")
+            sysTies += 1
+            print(f"Player score: {p1wins}. Computer score: {p2wins}. Scratches: {sysTies}.")
         
         try:
             if win == True:
@@ -308,14 +320,11 @@ def play_t3():
     # if yes,
         # clear each key in the board with a for loop
         # and reinitiate the game loop (play_t3()).
-    BOARD = {1: ' ',  2: ' ',  3: ' ',
-
-            4: ' ',  5: ' ',  6: ' ',
-
-            7: ' ',  8: ' ',  9: ' '}
     
     choice = input("Play again? (y) to continue: ")
-    if choice == "y":
+    if choice == "y":   
+        for key in BOARD:
+            BOARD[key] = " "
         play_t3()
 
 
