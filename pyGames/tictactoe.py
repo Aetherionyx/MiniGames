@@ -222,10 +222,11 @@ def play_t3():
     p1wins = 0
     p2wins = 0
     sysTies = 0
+    choice = "y"
 
     current_player = "X"
 
-    while not game_over:
+    while choice == "y":
 
         # Print the current state of the board
         render()
@@ -285,7 +286,7 @@ def play_t3():
         try:
             if win == True:
                 game_over = True
-                break
+                #break
         except:
             print("No winner yet.")
 
@@ -311,21 +312,24 @@ def play_t3():
 
         if (' ' not in BOARD.values()) or game_over is True:
             render()
-            game_over = True
-            return game_over
+            choice = input("Play again? (y) to continue: ")
+            if choice == "y":   
+                #reset the board
+                for key in BOARD:
+                    BOARD[key] = " "
+                #initializing the next round within the loop.
+                game_over = False
+                spots_left = 9
+                game_round = 0
+                win = False
+            if choice != "y":
+                game_over = True
+                break
             
-    
-
     # prompt for a restart and assign the input to a 'restart' variable.
     # if yes,
         # clear each key in the board with a for loop
-        # and reinitiate the game loop (play_t3()).
-    
-    choice = input("Play again? (y) to continue: ")
-    if choice == "y":   
-        for key in BOARD:
-            BOARD[key] = " "
-        play_t3()
+        # and reinitiate the game loop (play_t3())
 
 
 play_t3()
