@@ -39,7 +39,8 @@ Input the game ID, or type 'exit' to exit.
 
     elif game_choice == '3':
         try:
-            play_checkers()
+            from pyGames.numberGame.py import * 
+            play_numGuesser()
         except:
             print("Game not found.")
 
